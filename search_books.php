@@ -119,7 +119,7 @@
                         <div class="name" style="font-size: 12px;">Aurthor: <?php echo $fetch_book['title']; ?></div>
                         <div style="font-weight: 500; font-size:18px; " class="name">Name: <?php echo $fetch_book['name']; ?></div>
                      </div>
-                     <div class="price">Price: $ <?php echo $fetch_book['price']; ?>/-</div>
+                     <div class="price">Price: $ <?php echo $fetch_book['price']; ?></div>
                      <!-- <button name="add_cart"><img src="./images/cart2.png" alt=""></button> -->
                      <form action="" method="POST">
                         <input class="hidden_input" type="hidden" name="book_name" value="<?php echo $fetch_book['name'] ?>">

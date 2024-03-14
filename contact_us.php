@@ -47,9 +47,10 @@
         }
     }
     ?>
-    <div class="contact-section">
-
+    <div class="contact-section" style="text-align: center">
+        
         <h1>Contact Us</h1>
+        <br>
         <h3>Hello, <span>
                 <?php echo $user_name; ?>
             </span> &nbsp;how we can help you?</h3>

@@ -54,13 +54,13 @@
         <div class="box-container">
 
             <?php
-            $select_user = mysqli_query($conn, "SELECT Id,name,surname,email,password,user_type FROM users_info") or die('query failed');
+            $select_user = mysqli_query($conn, "SELECT user_id,name,surname,email,password,user_type FROM users_info") or die('query failed');
             if (mysqli_num_rows($select_user) > 0) {
                 while ($fetch_user = mysqli_fetch_assoc($select_user)) {
                     ?>
                     <div class="box">
                         <div class="name">User ID:
-                            <?php echo $fetch_user['Id']; ?>
+                            <?php echo $fetch_user['user_id']; ?>
                         </div>
                         <div class="name">Name:
                             <?php echo $fetch_user['name']; ?>&nbsp;
@@ -82,8 +82,8 @@
                             <?php echo $fetch_user['user_type']; ?>
                         </div>
                         <a style="color:rgb(255, 187, 0);"
-                            href="users_detail.php?update_user=<?php echo $fetch_user['Id']; ?>">Update</a>
-                        <a href="users_detail.php?delete_user=<?php echo $fetch_user['Id']; ?>"
+                            href="users_detail.php?update_user=<?php echo $fetch_user['user_id']; ?>">Update</a>
+                        <a href="users_detail.php?delete_user=<?php echo $fetch_user['user_id']; ?>"
                             onclick="return confirm('Are you sure you want to delete this user');">Delete</a>
                     </div>
                     <?php

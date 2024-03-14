@@ -107,7 +107,7 @@
         <div style="align-items: center; justify-content: center; margin-top: 20px;" class="cmsg flex">
             <p style="margin-right: 10px;">Copyright &copy; <script>document.write(new Date().getFullYear())</script> All Rights are reserved by</p>
             <div style="font-size: 30px;" class="logo">
-                <a href="index.php"><span style="font-size: 15px;">Bookflex </span><span class="me" style="font-size: 15px;"></span></a>
+                <a href="index.php"><span style="font-size: 15px;">G1-Bookflex</span><span class="me" style="font-size: 15px;"></span></a>
             </div> 
         </div>
     </div>

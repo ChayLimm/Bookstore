@@ -107,7 +107,7 @@
                         <p> Your orders : <span>
                                 <?php echo $fetch_book['total_books']; ?>
                             </span> </p>
-                        <p> Total price : <span>
+                        <p> Total price : <span>$
                                 <?php echo $fetch_book['total_price']; ?>
                             </span> </p>
                         <p> Payment status : <span style="color:<?php if ($fetch_book['payment_status'] == 'pending') {
@@ -117,9 +117,9 @@
                         } ?>;">
                                 <?php echo $fetch_book['payment_status']; ?>
                             </span> </p>
-                            
+
                         <!-- for user print Recipt when done on Payment -->
-                        <p><a href="?order_id=<?php echo $fetch_book['order_id']; ?>" target="_blank">Print Recipt</a></p>
+                        <p><a href="#?order_id=<?php echo $fetch_book['order_id']; ?>" target="_blank">Print Recipt</a></p>
                     </div>
                     <!-- <form action="" method="POST">
                         <input type="hidden" name="order_id" value="<?php echo $fetch_book['order_id']; ?>">

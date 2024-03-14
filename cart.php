@@ -165,7 +165,7 @@
                 <tr>
                     <th style="text-align:center;" colspan="3">Total</th>
                     <th colspan="2">$
-                        <?php echo $total; ?>/-
+                        <?php echo $total; ?>
                     </th>
 
                 </tr>
@@ -178,8 +178,9 @@
             } else {
                 echo 'none';
             }
-            ; ?>"> &nbsp; Proceed to
-            Checkout</a> <a class="cart-btn2" href="index.php">Continue Shoping</a>
+            ; ?>"> &nbsp; Proceed to Checkout</a> 
+        <a class="cart-btn2" href="index.php">Continue Shoping</a>
+        
     </div>
     <?php include 'index_footer.php'; ?>
 

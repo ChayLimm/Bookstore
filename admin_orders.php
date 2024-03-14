@@ -184,8 +184,8 @@
                         <p> Your orders : <span>
                                 <?php echo $fetch_book['total_books']; ?>
                             </span> </p>
-                        <p> Total price : <span>₹
-                                <?php echo $fetch_book['total_price']; ?>/-
+                        <p> Total price : <span>$
+                                <?php echo $fetch_book['total_price']; ?>
                             </span> </p>
                         <form action="" method="post">
                             <input type="hidden" name="order_id" value="<?php echo $fetch_book['order_id']; ?>"> Payment Status :<select name="update_payment">

@@ -12,12 +12,12 @@
 
 
     if(isset($_POST['send_msg'])) {
-    $name = mysqli_real_escape_string($conn, $_POST['msg_name']);
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
     $msg = mysqli_real_escape_string($conn, $_POST['msg']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
 
-        mysqli_query($conn, "INSERT INTO msg (`user_id`,`msg_name`,`email`, `number`, `msg`) VALUES('$user_id','$name','$email','$phone','$msg')") or die('Mesage send Query failed');
+        mysqli_query($conn, "INSERT INTO msg (`user_id`,`name`,`email`, `number`, `msg`) VALUES('$user_id','$name','$email','$phone','$msg')") or die('Mesage send Query failed');
         $message[]='Message Send Successfully';
     }
 ?>
@@ -28,7 +28,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Contact-Us</title>
+    <title>Contact Us</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/style.css">

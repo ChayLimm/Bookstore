@@ -121,16 +121,16 @@
                 echo ' <img style="height:40px; margin-left:10px ;" src="images/ds2.png" class="user-pic" onclick="toggleMenu()" />';
             } else {
                 echo '<div class="use_links"><a class="link_Btn" style="background-color: rgb(0, 167, 245);
-        padding: 6px;
-        border-radius: 10px;
-        margin-left: 10px;
-        color: white;
-        font-weight: 500;" href="login.php">Login</a><a class="link_Btn" style="background-color: rgb(0, 167, 245);
-        padding: 6px;
-        border-radius: 10px;
-        margin-left: 10px;
-        color: white;
-        font-weight: 500;" href="register.php">Register</a></div>';
+                    padding: 6px;
+                    border-radius: 10px;
+                    margin-left: 10px;
+                    color: white;
+                    font-weight: 500;" href="login.php">Login</a><a class="link_Btn" style="background-color: rgb(0, 167, 245);
+                    padding: 6px;
+                    border-radius: 10px;
+                    margin-left: 10px;
+                    color: white;
+                    font-weight: 500;" href="register.php">Register</a></div>';
 
             }
             ?>
@@ -155,7 +155,7 @@
                 <p>Cart</p>
                 <span>></span>
             </a>
-            <a href="contact-us.php" class="sub-menu-link">
+            <a href="contact_us.php" class="sub-menu-link">
                 <p>Contact Us</p>
                 <span>></span>
             </a>

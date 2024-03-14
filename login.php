@@ -15,13 +15,13 @@
             $row = mysqli_fetch_assoc($select_users);
 
             if ($row['user_type'] == 'Admin') {
-                $_SESSION['admin_name'] = $row['fname'];
+                $_SESSION['admin_name'] = $row['name'];
                 $_SESSION['admin_email'] = $row['email'];
                 $_SESSION['admin_id'] = $row['user_id'];
                 header('location:admin_index.php');
 
             } elseif ($row['user_type'] == 'User') {
-                    $_SESSION['user_name'] = $row['fname'];
+                    $_SESSION['user_name'] = $row['name'];
                     $_SESSION['user_email'] = $row['email'];
                     $_SESSION['user_id'] = $row['user_id'];
                     header('location:index.php');

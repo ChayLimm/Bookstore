@@ -13,7 +13,7 @@ CREATE TABLE  if not exists book_info(
 	description longtext not null, 
 	image varchar(10) NOT NULL,
 	date datetime NOT NULL DEFAULT current_timestamp()
-	 
+	
 );
 
 INSERT INTO book_info (bid, name, title, price , category, description, image, date) VALUES

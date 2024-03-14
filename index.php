@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/hello.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -57,6 +57,7 @@
 
 <body>
     <?php include 'index_header.php' ?>
+
     <?php
     if (isset($message)) {
         foreach ($message as $message) {
@@ -119,20 +120,20 @@
         <div class="box-container">
 
             <?php
-            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` ORDER BY b_date DESC LIMIT 8") or die('query failed');
+            $select_book = mysqli_query($conn, "SELECT * FROM book_info ORDER BY date DESC LIMIT 8") or die('query failed');
             if (mysqli_num_rows($select_book) > 0) {
                 while ($fetch_book = mysqli_fetch_assoc($select_book)) {
                     ?>
 
                     <div class="box" style="width: 255px; height:355px;">
                         <a href="book_details.php?details=<?php echo $fetch_book['bid'];
-                        echo '-name=', $fetch_book['b_name']; ?>"> <img
+                        echo '-name=', $fetch_book['name']; ?>"> <img
                                 style="height: 200px;width: 125px;margin: auto;" class="books_images"
                                 src="added_books/<?php echo $fetch_book['image']; ?>" alt=""></a>
                         <div style="text-align:left ;">
 
                             <div style="font-weight: 500; font-size:18px; text-align: center; " class="name">
-                                <?php echo $fetch_book['b_name']; ?>
+                                <?php echo $fetch_book['name']; ?>
                             </div>
                         </div>
                         <div class="price">Price: $
@@ -141,7 +142,7 @@
                         <!-- <button name="add_cart"><img src="./images/cart2.png" alt=""></button> -->
                         <form action="" method="POST">
                             <input class="hidden_input" type="hidden" name="book_name"
-                                value="<?php echo $fetch_book['b_name'] ?>">
+                                value="<?php echo $fetch_book['name'] ?>">
                             <input class="hidden_input" type="hidden" name="book_id" value="<?php echo $fetch_book['bid'] ?>">
                             <input class="hidden_input" type="hidden" name="book_image"
                                 value="<?php echo $fetch_book['image'] ?>">
@@ -149,7 +150,7 @@
                                 value="<?php echo $fetch_book['price'] ?>">
                             <button onclick="myFunction()" name="add_to_cart"><img src="./images/cart2.png" alt="Add to cart">
                                 <a href="book_details.php?details=<?php echo $fetch_book['bid'];
-                                echo '-name=', $fetch_book['b_name']; ?>"
+                                echo '-name=', $fetch_book['name']; ?>"
                                     class="update_btn">Know More</a>
                         </form>
                         <!-- <button name="add_to_cart" ><img src="./images/cart2.png" alt="Add to cart"></button> -->

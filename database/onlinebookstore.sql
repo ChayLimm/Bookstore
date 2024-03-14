@@ -16,7 +16,7 @@ CREATE TABLE  if not exists book_info(
 	 
 );
 
-INSERT INTO book_info (bid, b_name, title, price , category, b_description, image, b_date) VALUES
+INSERT INTO book_info (bid, name, title, price , category, description, image, date) VALUES
 (72, 'Atomic Habits', 'James C', '20', 'knowledge', 'Her imaginative childrens books feature many natural animals that can be found in the British countryside', 'ah.png', '2023-02-23 13:14:49'),
 (81, 'Darwin', 'Darwin D.', '18', 'knowledge', 'Beatrix Potter ', 'sddxc.jpg', '2023-02-24 10:54:38'),
 (83, 'Capture The Crown ', 'Jennifer E.', '22', 'Magic', 'From the author of The Witch Boy trilogy comes a graphic novel about family, romance, and first love', 'gf.jpg', '2023-02-24 10:56:14'),
@@ -41,55 +41,51 @@ CREATE TABLE if not exists cart (
 	price double(10,2),
 	image varchar(25),
 	quantity INT(25) not null, 
-	total_price DOUBLE(10,2) not null, 
-	cart_date datetime NOT NULL DEFAULT current_timestamp()
+	total DOUBLE(10,2) not null, 
+	date datetime NOT NULL DEFAULT current_timestamp()
 
 );
 
-INSERT INTO cart (id, book_id, user_id, name, price, image, quantity, total_price , cart_date) 
+INSERT INTO cart (id, book_id, user_id, name, price, image, quantity, total , date) 
 VALUES (162, 96, 51, 'Last Blood ', 17, 'lb.jpg', 3, 50.00, '2023-03-10 14:44:26');
-
 
 
 CREATE TABLE if not exists confirm_order  (
   order_id INT(100) not null,
   user_id INT(100) not null,
-  cm_name VARCHAR(50) not null,
+  name VARCHAR(50) not null,
   email VARCHAR(50) not null,
-  cm_number INT(12) not null,
+  number INT(12) not null,
   address VARCHAR(500) not null,
   payment_method varchar(20) not null,
   total_books VARCHAR(500) not null,
   order_date VARCHAR(100) not null,
   payment_status  varchar(100) NOT NULL DEFAULT 'pending',
-  cm_date VARCHAR(20) not null,
+  date VARCHAR(20) not null,
   total_price DECIMAL(10,2) not null
---   city VARCHAR(100)not null,
---   state VARCHAR(50)not null,
---   country VARCHAR(50) not null,
 
 );
 
-INSERT IGNORE INTO confirm_order (order_id, user_id, cm_name, email, cm_number, address, payment_method, total_books, order_date, payment_status, cm_date, total_price) 
+INSERT IGNORE INTO confirm_order (order_id, user_id, name, email, number, address, payment_method, total_books, order_date, payment_status, date, total_price) 
 VALUES (1, 51, 'Sovanda Ban', 'sovanda@gmail.com', 1234567890, '123 Main St, Anytown, CA 12345','cash on delivery', 'Ray Bearer #88,(1)', '2023-03-10 14:44:26', 'completed', '2023-03-11 10:00:00', 50);
 
 
 CREATE TABLE if not exists msg (
- id INT(100) PRIMARY KEY not null, 
- user_id INT(100) not null, 
- msg_name VARCHAR(20) not null, 
- email VARCHAR(20) not null, 
- number INT(20) not null, 
- msg VARCHAR(50) not null, 
- msg_date datetime NOT NULL DEFAULT current_timestamp()
+	 id INT(100) PRIMARY KEY not null, 
+	 user_id INT(100) not null, 
+	 name VARCHAR(20) not null, 
+	 email VARCHAR(20) not null, 
+	 number INT(20) not null, 
+	 msg VARCHAR(50) not null, 
+	 date datetime NOT NULL DEFAULT current_timestamp()
 
  );
 
-INSERT INTO msg (id, user_id, msg_name, email, number, msg, msg_date)
+INSERT INTO msg (id, user_id, name, email, number, msg, date)
 VALUES
-(7, 51, 'Sovanda', 'sovanda@gmail.com', 12345678, 'Hello, this is a test message.', '2023-03-10 14:44:26'),
-(8, 52, 'Sophanny', 'sophanny@gmail.com', 87654321, 'Hi, I have a question about my order.', '2023-03-10 14:46:00'),
-(9, 53, 'Manson', 'manson@gmail.com', 11111111, 'Thank you for the prompt response.', '2023-03-10 14:50:26');
+	(7, 51, 'Sovanda', 'sovanda@gmail.com', 12345678, 'Hello, this is a test message.', '2023-03-10 14:44:26'),
+	(8, 52, 'Sophanny', 'sophanny@gmail.com', 87654321, 'Hi, I have a question about my order.', '2023-03-10 14:46:00'),
+	(9, 53, 'Manson', 'manson@gmail.com', 11111111, 'Thank you for the prompt response.', '2023-03-10 14:50:26');
 
 CREATE TABLE orders (
   id int(225)primary key ,
@@ -129,18 +125,18 @@ VALUES
 
 CREATE TABLE if not exists users_info (
 	 user_id INT(100) PRIMARY KEY not null, 
-	 fname VARCHAR(20) not null, 
-	 lname VARCHAR(20) not null, 
+	 name VARCHAR(20) not null, 
+	 surname VARCHAR(20) not null, 
 	 email VARCHAR(20) not null, 
 	 password VARCHAR(20) not null, 
 	 user_type VARCHAR(20) not null default 'user'
  );
  
-INSERT INTO users_info (user_id, fname, lname, email, password, user_type)
-VALUES (51, 'sovanda', 'ban', 'sovanda@gmail.com', '12345678', 'User'),
-       (52, 'sophanny', 'cheng', 'sophanny@gmail.com1', '12345678', 'Admin'),
-       (53, 'manson', 'chao', 'manson@gmail.com', '12345678', 'Admin'),
-       (54, 'chaylim', 'cheng', 'chaylim@gmail.com', '12345678', 'Admin');
+INSERT INTO users_info (user_id, name, surname, email, password, user_type)
+VALUES (51, 'sovanda', 'sovandaban', 'sovanda@gmail.com', '12345678', 'User'),
+       (52, 'sophanny', 'sophannycheng', 'sophanny@gmail.com', '12345678', 'Admin'),
+       (53, 'manson', 'mansonchao', 'manson@gmail.com', '12345678', 'Admin'),
+       (54, 'chaylim', 'chaylimcheng', 'chaylim@gmail.com', '12345678', 'Admin');
        
 
 -- auto increase 

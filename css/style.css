@@ -364,3 +364,80 @@ td .book_info img{
     border-bottom-left-radius: 8px;
   }
 /* **********************************ORDER PAGE*********************************** */
+/* **********************************MAGICAL PAGE*********************************** */
+
+
+  #firstbanner {
+    background-image: url(../images/magicbook.jpg);
+    height: 550px;
+    color: white;
+    padding-left: 150px;
+    padding-top: 200px;
+  }
+  .slang{
+    color:white;
+  }
+  .h1{
+    size: 60px;
+  }
+  #btnlearn{
+    background-color:transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    height: 34px;
+    width: 120px;
+    transition: 0.3s;
+    
+  }
+  #btnlearn:hover{
+    background-color:white;
+    color: black;
+  }
+  .arrival_magic{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+  }
+  /****************************************************PRODUCT******************************/
+  #book_container{
+    background-color:   mintcream;
+  }
+  #product_card{
+    width: 200px;
+    background-color:#fff;
+    padding: 1em;
+    box-shadow: 0 5px 5px #e1e1e1;
+  }
+  #product_card img{
+    width:160px;
+
+  }
+  #product_card h4{
+    padding-top: -10px;
+    font-size: 16px;
+    margin: 0.5em ;
+    
+  }
+  #product_card p{
+    padding-top: -20px;
+    margin-left: 10px;
+    color: #008000;
+    text-align: start;
+  }
+  .pbuy{
+    background-color: transparent;
+   border-radius: 3px ;  
+   color: black;
+   border: 1px solid black;
+   width: 40px;
+   font-size: 14px;
+  }
+  .padd{
+   background-color: black;
+   border-radius: 3px  ;  
+   color: white;
+   font-size: 14px;
+   width: 100px;
+
+}

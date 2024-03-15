@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="./css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 <style>
+    a {
+    text-decoration: none;
+}
     .sub-menu-wrap {
         position: fixed;
         top: 9%;
@@ -103,11 +108,11 @@
             <div class="dropdown">
                 <button class="dropbtn">Books </button>
                 <div class="dropdown-content">
-                    <a href="http://localhost/Bookstore/index.php#New">New Arrived</a>
-                    <a href="http://localhost/Bookstore/index.php#Adventure">Adventure</a>
-                    <a href="http://localhost/Bookstore/index.php#Magical">Magic</a>
-                    <a href="http://localhost/Bookstore/index.php#Knowledge">Knowledge</a>
-                    <a href="http://localhost/Bookstore/index.php#KhmerBook">Khmer Book</a>
+                    <a href="http://localhost:3000/Bookstore/index.php#New">New Arrived</a>
+                    <a href="http://localhost:3000/Bookstore/index.php#Adventure">Adventure</a>
+                    <a href="http://localhost:3000/magic.php">Magic</a>
+                    <a href="http://localhost:3000/Bookstore/index.php#Knowledge">Knowledge</a>
+                    <a href="http://localhost:3000/Bookstore/index.php#KhmerBook">Khmer Book</a>
 
                 </div>
             </div>

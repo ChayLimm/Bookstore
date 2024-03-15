@@ -103,10 +103,11 @@
             <div class="dropdown">
                 <button class="dropbtn">Books </button>
                 <div class="dropdown-content">
-                    <a href="http://localhost/bookflix/index.php#New">New Arrived</a>
-                    <a href="http://localhost/bookflix/index.php#Adventure">Adventure</a>
-                    <a href="http://localhost/bookflix/index.php#Magical">Magic</a>
-                    <a href="http://localhost/bookflix/index.php#Knowledge">Knowledge</a>
+                    <a href="http://localhost/Bookstore/index.php#New">New Arrived</a>
+                    <a href="http://localhost/Bookstore/index.php#Adventure">Adventure</a>
+                    <a href="http://localhost/Bookstore/index.php#Magical">Magic</a>
+                    <a href="http://localhost/Bookstore/index.php#Knowledge">Knowledge</a>
+                    <a href="http://localhost/Bookstore/index.php#KhmerBook">Khmer Book</a>
 
                 </div>
             </div>

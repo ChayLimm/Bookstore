@@ -60,7 +60,7 @@
 
             $total_books = implode(' ', $cart_products);
 
-            $order_query = mysqli_query($conn, "SELECT * FROM `confirm_order` WHERE cm_name = '$name' AND cm_number = '$number' AND email = '$email' AND payment_method = '$method' AND address = '$address' AND total_books = '$total_books' AND total_price = '$cart_total'") or die('query failed');
+            $order_query = mysqli_query($conn, "SELECT * FROM `confirm_order` WHERE name = '$name' AND number = '$number' AND email = '$email' AND payment_method = '$method' AND address = '$address' AND total_books = '$total_books' AND total = '$cart_total'") or die('query failed');
 
 
             if (mysqli_num_rows($order_query) > 0) {
@@ -321,7 +321,7 @@
                                             <p> <a href="book_details.php?details=<?php echo $fetch_cart['book_id']; ?>">
                                                     <?php echo $fetch_cart['name']; ?>
                                                 </a><span class="price">(
-                                                    <?php echo '₹ ' . $fetch_cart['price'] . '/-' . ' x ' . $fetch_cart['quantity']; ?>)
+                                                    <?php echo '$ ' . $fetch_cart['price'] . ' x ' . $fetch_cart['quantity']; ?>)
                                                 </span> </p>
                                             <?php
                                         }
@@ -331,8 +331,8 @@
                                     ?>
 
                                     <hr>
-                                    <p>Grand total : <span class="price" style="color:black">₹ <b>
-                                                <?php echo $grand_total; ?>/-
+                                    <p>Grand total : <span class="price" style="color:black">$ <b>
+                                                <?php echo $grand_total; ?>
                                             </b></span></p>
                                 </div>
                             </div>

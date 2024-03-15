@@ -159,7 +159,7 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
             }
             ?>
         </div>
@@ -178,7 +178,7 @@
         <div class="box-container">
 
             <?php
-            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` where category='Adventure'") or die('query failed');
+            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` where category='Adventure' LIMIT 4") or die('query failed');
             if (mysqli_num_rows($select_book) > 0) {
                 while ($fetch_book = mysqli_fetch_assoc($select_book)) {
                     ?>
@@ -216,7 +216,7 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
             }
             ?>
         </div>
@@ -235,7 +235,7 @@
         <div class="box-container">
 
             <?php
-            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` where category='Magic'") or die('query failed');
+            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` where category='Magic' LIMIT 4") or die('query failed');
             if (mysqli_num_rows($select_book) > 0) {
                 while ($fetch_book = mysqli_fetch_assoc($select_book)) {
                     ?>
@@ -273,7 +273,7 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
             }
             ?>
         </div>
@@ -292,7 +292,7 @@
         <div class="box-container">
 
             <?php
-            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` Where category='knowledge'") or die('query failed');
+            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` Where category='knowledge' LIMIT 4") or die('query failed');
             if (mysqli_num_rows($select_book) > 0) {
                 while ($fetch_book = mysqli_fetch_assoc($select_book)) {
                     ?>
@@ -330,7 +330,64 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
+            }
+            ?>
+        </div>
+    </section>
+    <section id="KhmerBook">
+
+        <div class="container px-5 mx-auto">
+            <h2 class="text-gray-400 m-8 font-extrabold text-4xl text-center border-t-2 text-red-800"
+                style="color: rgb(0, 167, 245);">
+                Khmer Book
+            </h2>
+        </div>
+
+    </section>
+    <section class="show-products">
+        <div class="box-container">
+
+            <?php
+            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` Where category='KhmerBook' LIMIT 4") or die('query failed');
+            if (mysqli_num_rows($select_book) > 0) {
+                while ($fetch_book = mysqli_fetch_assoc($select_book)) {
+                    ?>
+
+                    <div class="box" style="width: 255px;height: 355px;">
+                        <a href="book_details.php?details=<?php echo $fetch_book['bid'];
+                        echo '-name=', $fetch_book['name']; ?>"> <img
+                                style="height: 200px;width: 125px;margin: auto;" class="books_images"
+                                src="added_books/<?php echo $fetch_book['image']; ?>" alt=""></a>
+                        <div style="text-align:left ;">
+
+                            <div style="font-weight: 500; font-size:18px; text-align: center;" class="name">
+                                <?php echo $fetch_book['name']; ?>
+                            </div>
+                        </div>
+                        <div class="price">Price: $
+                            <?php echo $fetch_book['price']; ?>
+                        </div>
+                        <!-- <button name="add_cart"><img src="./images/cart2.png" alt=""></button> -->
+                        <form action="" method="POST">
+                            <input class="hidden_input" type="hidden" name="book_name"
+                                value="<?php echo $fetch_book['name'] ?>">
+                            <input class="hidden_input" type="hidden" name="book_image"
+                                value="<?php echo $fetch_book['image'] ?>">
+                            <input class="hidden_input" type="hidden" name="book_price"
+                                value="<?php echo $fetch_book['price'] ?>">
+                            <button name="add_to_cart"><img src="./images/cart2.png" alt="Add to cart">
+                                <a href="book_details.php?details=<?php echo $fetch_book['bid'];
+                                echo '-name=', $fetch_book['name']; ?>"
+                                    class="update_btn">Know More</a>
+                        </form>
+                        <!-- <button name="add_to_cart" ><img src="./images/cart2.png" alt="Add to cart"></button> -->
+                        <!-- <input type="submit" name="add_cart" value="cart"> -->
+                    </div>
+                    <?php
+                }
+            } else {
+                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
             }
             ?>
         </div>

@@ -17,7 +17,7 @@
             if($password != $cpassword){
                 $message[] = 'Confirm password not matched.';
             }else{
-                mysqli_query($conn, "INSERT INTO users_info(`fname`, `lname`, `email`, `password`, `user_type`) VALUES('$fname','$lname','$email','$password','$user_type')") or die('Query failed');
+                mysqli_query($conn, "INSERT INTO users_info(`name`, `surname`, `email`, `password`, `user_type`) VALUES('$fname','$lname','$email','$password','$user_type')") or die('Query failed');
                 $message[]='Registration Done Successfully';
             }
         }

@@ -9,7 +9,7 @@
         header('location:login.php');
     }
 
-
+ 
     if (isset($_GET['delete_msg'])) {
         $msg_id = $_GET['delete_msg'];
         mysqli_query($conn, "DELETE FROM `msg` WHERE id = '$msg_id'") or die('query failed');

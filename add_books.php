@@ -123,6 +123,7 @@
                 <option value="Adventure">Adventure</option>
                 <option value="Magic">Magic</option>
                 <option value="knowledge">knowledge</option>
+                <option value="khmerBook">khmer Book</option>
             </select>
             <textarea name="bdesc" placeholder="Enter book description" id="" class="text_field" cols="18"
                 rows="5"></textarea>
@@ -151,6 +152,7 @@
                             <option value="Adventure">Adventure</option>
                             <option value="Magic">Magic</option>
                             <option value="knowledge">knowledge</option>
+                            <option value="khmerBook">Khmer Book</option>
                         </select>
                         <input type="text" name="update_description" value="<?php echo $fetch_update['description']; ?>" class="box"
                             required placeholder="enter product description">
@@ -224,6 +226,7 @@
                             <option value="Adventure">Adventure</option>
                             <option value="Magic">Magic</option>
                             <option value="knowledge">knowledge</option>
+                            <option value="khmerBook">Khmer Book</option>
                         </select>
                         <input type="text" name="update_description" value="<?php echo $fetch_update['description']; ?>" class="box"
                             required placeholder="enter product description">

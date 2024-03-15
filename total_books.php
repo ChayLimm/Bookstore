@@ -84,7 +84,7 @@
                         <input type="hidden" name="update_p_id" value="<?php echo $fetch_update['bid']; ?>">
                         <input type="hidden" name="update_old_image" value="<?php echo $fetch_update['image']; ?>">
                         <img src="./added_books/<?php echo $fetch_update['image']; ?>" alt="">
-                        <input type="text" name="update_name" value="<?php echo $fetch_update['b_name']; ?>" class="box" required
+                        <input type="text" name="update_name" value="<?php echo $fetch_update['name']; ?>" class="box" required
                             placeholder="Enter Book Name">
                         <input type="text" name="update_title" value="<?php echo $fetch_update['title']; ?>" class="box" required
                             placeholder="Enter Author Name">
@@ -93,7 +93,7 @@
                             <option value="Magic">Magic</option>
                             <option value="knowledge">knowledge</option>
                         </select>
-                        <input type="text" name="update_description" value="<?php echo $fetch_update['b_description']; ?>" class="box"
+                        <input type="text" name="update_description" value="<?php echo $fetch_update['description']; ?>" class="box"
                             required placeholder="enter product description">
                         <input type="number" name="update_price" value="<?php echo $fetch_update['price']; ?>" min="0" class="box"
                             required placeholder="enter product price">
@@ -115,7 +115,7 @@
         <div class="box-container">
 
             <?php
-            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` ORDER BY b_date DESC") or die('query failed');
+            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` ORDER BY date DESC") or die('query failed');
             if (mysqli_num_rows($select_book) > 0) {
                 while ($fetch_book = mysqli_fetch_assoc($select_book)) {
                     ?>
@@ -125,7 +125,7 @@
                             <?php echo $fetch_book['title']; ?>
                         </div>
                         <div class="name">Name:
-                            <?php echo $fetch_book['b_name']; ?>
+                            <?php echo $fetch_book['name']; ?>
                         </div>
                         <div class="price">Price: $
                             <?php echo $fetch_book['price']; ?>

@@ -80,6 +80,7 @@
                                 <a href="index.php#Adventure">Adventure</a>
                                 <a href="index.php#Magical">Magic</a>
                                 <a href="index.php#Knowledge">Knowledge</a>
+                                <a href="index.php#KhmerBook">Khmer Book</a>
                             </div>
                         </div>
                     </li>

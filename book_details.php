@@ -108,8 +108,8 @@
                                 <h1>Name:
                                     <?php echo $fetch_book['name']; ?>
                                 </h1>
-                                <h3>Price: ₹
-                                    <?php echo $fetch_book['price']; ?>/-
+                                <h3>Price: $
+                                    <?php echo $fetch_book['price']; ?>
                                 </h3>
                                 <label for="quantity">Quantity:</label>
                                 <input type="number" name="quantity" value="1" min="1" max="10" id="quantity">

@@ -12,7 +12,7 @@
 
     if (isset($_GET['delete_user'])) {
         $delete_id = $_GET['delete_user'];
-        mysqli_query($conn, "DELETE FROM `users_info` WHERE Id = '$delete_id'") or die('query failed');
+        mysqli_query($conn, "DELETE FROM `users_info` WHERE user_id = '$delete_id'") or die('query failed');
         header('location:users_detail.php');
     }
 
@@ -25,7 +25,7 @@
         $update_password = $_POST['update_password'];
         $update_user_type = $_POST['update_user_type'];
 
-        mysqli_query($conn, "UPDATE `users_info` SET name = '$update_name', surname='$update_name', email ='$update_email', password = '$update_password', user_type='$update_user_type' WHERE Id = '$update_id'") or die('query failed');
+        mysqli_query($conn, "UPDATE `users_info` SET name = '$update_name', surname='$update_name', email ='$update_email', password = '$update_password', user_type='$update_user_type' WHERE user_id = '$update_id'") or die('query failed');
 
         header('location:./users_detail.php');
     }
@@ -100,12 +100,12 @@
             <?php
             if (isset($_GET['update_user'])) {
                 $update_id = $_GET['update_user'];
-                $update_query = mysqli_query($conn, "SELECT * FROM `users_info` WHERE Id = '$update_id'") or die('query failed');
+                $update_query = mysqli_query($conn, "SELECT * FROM `users_info` WHERE user_id = '$update_id'") or die('query failed');
                 if (mysqli_num_rows($update_query) > 0) {
                     while ($fetch_update = mysqli_fetch_assoc($update_query)) {
                         ?>
                         <form action="" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="update_id" value="<?php echo $fetch_update['Id']; ?>">
+                            <input type="hidden" name="update_id" value="<?php echo $fetch_update['user_id']; ?>">
                             <input type="text" value="<?php echo $fetch_update['name'] ?>" name="update_name"
                                 placeholder="Enter Name" required class="box ">
                             <input type="text" value="<?php echo $fetch_update['surname'] ?>" name="update_sname"

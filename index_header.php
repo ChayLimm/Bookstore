@@ -106,7 +106,7 @@
         <div class="nav">
             <a href="index.php">Home</a>
             <div class="dropdown">
-                <button class="dropbtn">Books </button>
+                <button class="dropbtn">Genre </button>
                 <div class="dropdown-content">
                     <a href="index.php#New">New Arrived</a>
                     <a href="http://localhost:3000/index.php#Adventure">Adventure</a>
@@ -126,12 +126,15 @@
             if (isset($_SESSION['user_name'])) {
                 echo ' <img style="height:40px; margin-left:10px ;" src="images/ds2.png" class="user-pic" onclick="toggleMenu()" />';
             } else {
-                echo '<div class="use_links"><a class="link_Btn" style="background-color: rgb(0, 167, 245);
+                echo '<div class="use_links"><a class="link_Btn" style="
+                    background-color: transparent;
                     padding: 6px;
                     border-radius: 10px;
                     margin-left: 10px;
-                    color: white;
-                    font-weight: 500;" href="login.php">Login</a><a class="link_Btn" style="background-color: rgb(0, 167, 245);
+                    color: black;
+                    border : 1px solid black;
+                    font-weight: 500;" href="login.php">Login</a>
+                    <a class="link_Btn" style="background-color: black;
                     padding: 6px;
                     border-radius: 10px;
                     margin-left: 10px;

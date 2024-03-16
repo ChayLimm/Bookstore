@@ -78,9 +78,9 @@
                             <a class="dropbtn">Books🔻</a>
                             <div class="dropdown-content">
                                 <a href="index.php#Adventure">Adventure</a>
-                                <a href="index.php#Magical">Magic</a>
+                                <a href="magic.php">Magic</a>
                                 <a href="index.php#Knowledge">Knowledge</a>
-                                <a href="index.php#KhmerBook">Khmer Book</a>
+                                <a href="khmerbook.php">Khmer Book</a>
                             </div>
                         </div>
                     </li>
@@ -108,7 +108,7 @@
         <div style="align-items: center; justify-content: center; margin-top: 20px;" class="cmsg flex">
             <p style="margin-right: 10px;">Copyright &copy; <script>document.write(new Date().getFullYear())</script> All Rights are reserved by</p>
             <div style="font-size: 30px;" class="logo">
-                <a href="index.php"><span style="font-size: 15px;">G1-Bookflex</span><span class="me" style="font-size: 15px;"></span></a>
+                <a href="index.php"><span style="font-size: 15px; margin-bottom: 10px;">G1-Bookflex</span><span class="me" style="font-size: 15px;"></span></a>
             </div> 
         </div>
     </div>

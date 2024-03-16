@@ -159,7 +159,7 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto; color: red">No products added yet!</p>';
             }
             ?>
         </div>
@@ -216,7 +216,7 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto; color: red">No products added yet!</p>';
             }
             ?>
         </div>
@@ -273,7 +273,7 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto; color: red">No products added yet!</p>';
             }
             ?>
         </div>
@@ -330,7 +330,7 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto; color: red">No products added yet!</p>';
             }
             ?>
         </div>
@@ -387,7 +387,7 @@
                     <?php
                 }
             } else {
-                echo '<p class="empty" style="margin: auto">No products added yet!</p>';
+                echo '<p class="empty" style="margin: auto; color: red">No products added yet!</p>';
             }
             ?>
         </div>

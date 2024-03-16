@@ -6,7 +6,7 @@
 <style>
     a {
     text-decoration: none;
-}
+    }
     .sub-menu-wrap {
         position: fixed;
         top: 9%;
@@ -108,11 +108,11 @@
             <div class="dropdown">
                 <button class="dropbtn">Books </button>
                 <div class="dropdown-content">
-                    <a href="http://localhost:3000/Bookstore/index.php#New">New Arrived</a>
-                    <a href="http://localhost:3000/Bookstore/index.php#Adventure">Adventure</a>
+                    <a href="index.php#New">New Arrived</a>
+                    <a href="http://localhost:3000/index.php#Adventure">Adventure</a>
                     <a href="http://localhost:3000/magic.php">Magic</a>
-                    <a href="http://localhost:3000/Bookstore/index.php#Knowledge">Knowledge</a>
-                    <a href="http://localhost:3000/Bookstore/index.php#KhmerBook">Khmer Book</a>
+                    <a href="http://localhost:3000/index.php#Knowledge">Knowledge</a>
+                    <a href="http://localhost:3000/khmerbook.php">Khmer Book</a>
 
                 </div>
             </div>

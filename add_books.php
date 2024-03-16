@@ -176,7 +176,7 @@
         <div class="box-container">
 
             <?php
-            $select_book = mysqli_query($conn, "SELECT * FROM book_info ORDER BY b_date DESC LIMIT 2;") or die('query failed');
+            $select_book = mysqli_query($conn, "SELECT * FROM book_info ORDER BY date DESC LIMIT 2;") or die('query failed');
             if (mysqli_num_rows($select_book) > 0) {
                 while ($fetch_book = mysqli_fetch_assoc($select_book)) {
                     ?>
@@ -186,7 +186,7 @@
                             <?php echo $fetch_book['title']; ?>
                         </div>
                         <div class="name">Name:
-                            <?php echo $fetch_book['b_name']; ?>
+                            <?php echo $fetch_book['name']; ?>
                         </div>
                         <div class="price">Price: $
                             <?php echo $fetch_book['price']; ?>

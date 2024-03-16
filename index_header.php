@@ -123,7 +123,7 @@
         <div class="user-box" style="display: flex; align-items:center;">
             <a class="Btn" href="search_books.php"><img style="height:30px;" src="./images/sea2.png" alt=""></a>
             <?php
-            if (isset($_SESSION['user_name'])) {
+            if (isset($_SESSION['user_name'])) {  
                 echo ' <img style="height:40px; margin-left:10px ;" src="images/ds2.png" class="user-pic" onclick="toggleMenu()" />';
             } else {
                 echo '<div class="use_links"><a class="link_Btn" style="

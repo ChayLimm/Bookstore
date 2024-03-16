@@ -86,7 +86,7 @@
                         $sub_total = ($cart_item['price'] * $cart_item['quantity']);
                         $cart_total += $sub_total;
 
-                        mysqli_query($conn, "INSERT INTO `orders`(user_id,id,address,city,state,country,pincode,book,quantity,unit_price,sub_total) VALUES('$user_id','$conn_oid','$address','$city','$state','$country','$pincode','$cart_books','$quantity','$unit_price','$sub_total')") or die('query failed');
+                        mysqli_query($conn, "INSERT INTO `orders`(user_id,order_id,address,city,state,country,pincode,book,quantity,unit_price,sub_total) VALUES('$user_id','$conn_oid','$address','$city','$state','$country','$pincode','$cart_books','$quantity','$unit_price','$sub_total')") or die('query failed');
                     }
                 }
 

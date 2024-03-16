@@ -60,13 +60,13 @@
 
             $total_books = implode(' ', $cart_products);
 
-            $order_query = mysqli_query($conn, "SELECT * FROM `confirm_order` WHERE name = '$name' AND number = '$number' AND email = '$email' AND payment_method = '$method' AND address = '$address' AND total_books = '$total_books' AND total = '$cart_total'") or die('query failed');
+            $order_query = mysqli_query($conn, "SELECT * FROM `confirm_order` WHERE name = '$name' AND number = '$number' AND email = '$email' AND payment_method = '$method' AND address = '$address' AND total_books = '$total_books' AND total_price = '$cart_total'") or die('query failed');
 
 
             if (mysqli_num_rows($order_query) > 0) {
                 $message[] = 'order already placed!';
             } else {
-                mysqli_query($conn, "INSERT INTO `confirm_order`(user_id, cm_name, cm_number, email, payment_method, address,total_books, total_price, order_date) VALUES('$user_id','$name', '$number', '$email','$method', '$full_address', '$total_books', '$cart_total', '$placed_on')") or die('query failed');
+                mysqli_query($conn, "INSERT INTO `confirm_order`(user_id, name, number, email, payment_method, address, total_books, total_price, order_date) VALUES('$user_id','$name', '$number', '$email','$method', '$full_address', '$total_books', '$cart_total', '$placed_on')") or die('query failed');
 
                 $conn_oid = $conn->insert_id;
                 $_SESSION['id'] = $conn_oid;

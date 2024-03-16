@@ -168,6 +168,12 @@ ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id);
 ALTER TABLE msg ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id);
 
 
+-- select * from orders;
+-- select * from confirm_order;
+
+-- delete from confirm_order where order_id = 4;
+-- DELETE FROM orders WHERE id IN (2, 3, 4);
+
 
 
 

@@ -1,102 +1,86 @@
 <?php 
 
-    include 'config.php';
+include 'config.php';
 
-    session_start();
+session_start();
 
-    $user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 
-    if (!isset($user_id)) {
-        header('location:login.php');
-    }
+if (!isset($user_id)) {
+    header('location:login.php');
+}
 
-    if (isset($_POST['checkout'])) {
+if (isset($_POST['checkout'])) {
 
-        $name = mysqli_real_escape_string($conn, $_POST['firstname']);
-        $number = $_POST['number'];
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $method = mysqli_real_escape_string($conn, $_POST['method']);
-        $address = mysqli_real_escape_string($conn, $_POST['address']);
-        $city = mysqli_real_escape_string($conn, $_POST['city']);
-        $state = mysqli_real_escape_string($conn, $_POST['state']);
-        $country = mysqli_real_escape_string($conn, $_POST['country']);
-        $pincode = mysqli_real_escape_string($conn, $_POST['pincode']);
-        $full_address = mysqli_real_escape_string($conn, $_POST['address'] . ', ' . $_POST['city'] . ', ' . $_POST['state'] . ', ' . $_POST['country'] . ' - ' . $_POST['pincode']);
-        $placed_on = date('d-M-Y');
+    $name = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $number = $_POST['number'];
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $method = mysqli_real_escape_string($conn, $_POST['method']);
+    $address = mysqli_real_escape_string($conn, $_POST['address']);
+    $city = mysqli_real_escape_string($conn, $_POST['city']);
+    $state = mysqli_real_escape_string($conn, $_POST['state']);
+    $country = mysqli_real_escape_string($conn, $_POST['country']);
+    $pincode = mysqli_real_escape_string($conn, $_POST['pincode']);
+    $full_address = mysqli_real_escape_string($conn, $_POST['address'] . ', ' . $_POST['city'] . ', ' . $_POST['state'] . ', ' . $_POST['country'] . ' - ' . $_POST['pincode']);
+    $placed_on = date('Y-m-d H:i:s');
 
-        $cart_total = 0;
-        $cart_products[] = '';
-        if (empty($name)) {
-            $message[] = 'Please Enter Your Name';
-        } elseif (empty($email)) {
-            $message[] = 'Please Enter Email Id';
-        } elseif (empty($number)) {
-            $message[] = 'Please Enter Mobile Number';
-        } elseif (empty($address)) {
-            $message[] = 'Please Enter Address';
-        } elseif (empty($city)) {
-            $message[] = 'Please Enter city';
-        } elseif (empty($state)) {
-            $message[] = 'Please Enter state';
-        } elseif (empty($country)) {
-            $message[] = 'Please Enter country';
-        } elseif (empty($pincode)) {
-            $message[] = 'Please Enter your area pincode';
-        } else {
+    $cart_total = 0;
+    $cart_products = array(); // Initialize array
+    if (empty($name)) {
+        $message[] = 'Please Enter Your Name';
+    } elseif (empty($email)) {
+        $message[] = 'Please Enter Email Id';
+    } elseif (empty($number)) {
+        $message[] = 'Please Enter Mobile Number';
+    } elseif (empty($address)) {
+        $message[] = 'Please Enter Address';
+    } elseif (empty($city)) {
+        $message[] = 'Please Enter city';
+    } elseif (empty($state)) {
+        $message[] = 'Please Enter state';
+    } elseif (empty($country)) {
+        $message[] = 'Please Enter country';
+    } elseif (empty($pincode)) {
+        $message[] = 'Please Enter your area pincode';
+    } else {
 
-            $cart_query = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
-            if (mysqli_num_rows($cart_query) > 0) {
-                while ($cart_item = mysqli_fetch_assoc($cart_query)) {
-                    $cart_products[] = $cart_item['name'] . ' #' . $cart_item['book_id'] . ',(' . $cart_item['quantity'] . ') ';
-                    $quantity = $cart_item['quantity'];
-                    $unit_price = $cart_item['price'];
-                    $cart_books = $cart_item['name'];
-                    $sub_total = ($cart_item['price'] * $cart_item['quantity']);
-                    $cart_total += $sub_total;
-
-                }
-            }
-
-
-            $total_books = implode(' ', $cart_products);
-
-            $order_query = mysqli_query($conn, "SELECT * FROM `confirm_order` WHERE name = '$name' AND number = '$number' AND email = '$email' AND payment_method = '$method' AND address = '$address' AND total_books = '$total_books' AND total = '$cart_total'") or die('query failed');
-
-
-            if (mysqli_num_rows($order_query) > 0) {
-                $message[] = 'order already placed!';
-            } else {
-                mysqli_query($conn, "INSERT INTO `confirm_order`(user_id, cm_name, cm_number, email, payment_method, address,total_books, total_price, order_date) VALUES('$user_id','$name', '$number', '$email','$method', '$full_address', '$total_books', '$cart_total', '$placed_on')") or die('query failed');
-
-                $conn_oid = $conn->insert_id;
-                $_SESSION['id'] = $conn_oid;
-                // $select_book = mysqli_query($conn, "SELECT * FROM `confirm_order`") or die('query failed');
-                //   if(mysqli_num_rows($select_book) > 0){
-                //     $fetch_book = mysqli_fetch_assoc($select_book);
-                //     $orders_id= $fetch_book['order_id'];
-                //   }
-
-                $cart_query = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
-                if (mysqli_num_rows($cart_query) > 0) {
-                    while ($cart_item = mysqli_fetch_assoc($cart_query)) {
-                        $cart_products[] = $cart_item['name'] . ' #' . $cart_item['book_id'] . ',(' . $cart_item['quantity'] . ') ';
-                        $quantity = $cart_item['quantity'];
-                        $unit_price = $cart_item['price'];
-                        $cart_books = $cart_item['name'];
-                        $sub_total = ($cart_item['price'] * $cart_item['quantity']);
-                        $cart_total += $sub_total;
-
-                        mysqli_query($conn, "INSERT INTO `orders`(user_id,id,address,city,state,country,pincode,book,quantity,unit_price,sub_total) VALUES('$user_id','$conn_oid','$address','$city','$state','$country','$pincode','$cart_books','$quantity','$unit_price','$sub_total')") or die('query failed');
-                    }
-                }
-
-                $message[] = 'order placed successfully!';
-                mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
+        // Get cart details
+        $cart_query = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
+        if (mysqli_num_rows($cart_query) > 0) {
+            while ($cart_item = mysqli_fetch_assoc($cart_query)) {
+                $cart_products[] = $cart_item['name'] . ' #' . $cart_item['book_id'] . ',(' . $cart_item['quantity'] . ') ';
+                $quantity = $cart_item['quantity'];
+                $unit_price = $cart_item['price'];
+                $sub_total = ($cart_item['price'] * $cart_item['quantity']);
+                $cart_total += $sub_total;
             }
         }
+
+        $total_books = implode(' ', $cart_products);
+
+        // Insert into orders and confirm_order tables
+        mysqli_query($conn, "INSERT INTO `orders` (user_id, address, city, state, country, pincode, book, quantity, unit_price, sub_total) 
+                    VALUES ('$user_id', '$address', '$city', '$state', '$country', '$pincode', '$total_books', '$quantity', '$unit_price', '$sub_total')") or die('Query failed: ' . mysqli_error($conn));
+
+        $order_id = mysqli_insert_id($conn); // Get the last inserted order id
+
+        mysqli_query($conn, "INSERT INTO `confirm_order` (order_id, user_id, name, number, email, payment_method, address, total_books, total_price, order_date) 
+                             VALUES ('$order_id', '$user_id', '$name', '$number', '$email', '$method', '$full_address', '$total_books', '$cart_total', '$placed_on')") or die('Query failed: ' . mysqli_error($conn));
+
+        // Clear the cart
+        mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = '$user_id'") or die('Query failed: ' . mysqli_error($conn));
+
+        $message[] = 'order placed successfully!';
     }
+}
 
 ?>
+
+
+
+
+
+
 
 
 <!DOCTYPE html>

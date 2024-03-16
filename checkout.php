@@ -22,7 +22,8 @@
         $country = mysqli_real_escape_string($conn, $_POST['country']);
         $pincode = mysqli_real_escape_string($conn, $_POST['pincode']);
         $full_address = mysqli_real_escape_string($conn, $_POST['address'] . ', ' . $_POST['city'] . ', ' . $_POST['state'] . ', ' . $_POST['country'] . ' - ' . $_POST['pincode']);
-        $placed_on = date('d-M-Y');
+        $placed_on = date('Y-m-d H:i:s');
+
 
         $cart_total = 0;
         $cart_products[] = '';
@@ -54,9 +55,10 @@
                     $sub_total = ($cart_item['price'] * $cart_item['quantity']);
                     $cart_total += $sub_total;
 
+                    // mysqli_query($conn, "INSERT INTO `orders`(user_id,address,city,state,country,pincode,book,quantity,unit_price,sub_total) VALUES('$user_id','$address','$city','$state','$country','$pincode','$cart_books','$quantity','$unit_price','$sub_total')") or die('query failed');
+
                 }
             }
-
 
             $total_books = implode(' ', $cart_products);
 
@@ -67,9 +69,8 @@
                 $message[] = 'order already placed!';
             } else {
                 mysqli_query($conn, "INSERT INTO `confirm_order`(user_id, name, number, email, payment_method, address, total_books, total_price, order_date) VALUES('$user_id','$name', '$number', '$email','$method', '$full_address', '$total_books', '$cart_total', '$placed_on')") or die('query failed');
-
                 $conn_oid = $conn->insert_id;
-                $_SESSION['id'] = $conn_oid;
+                $_SESSION['order_id'] = $conn_oid;
                 // $select_book = mysqli_query($conn, "SELECT * FROM `confirm_order`") or die('query failed');
                 //   if(mysqli_num_rows($select_book) > 0){
                 //     $fetch_book = mysqli_fetch_assoc($select_book);

@@ -13,7 +13,7 @@ CREATE TABLE  if not exists book_info(
 	description longtext not null, 
 	image varchar(10) NOT NULL,
 	date datetime NOT NULL DEFAULT current_timestamp()
-	
+	 
 );
 
 INSERT INTO book_info (bid, name, title, price , category, description, image, date) VALUES
@@ -34,7 +34,7 @@ INSERT INTO book_info (bid, name, title, price , category, description, image, d
 -- select * from book_info;
 
 CREATE TABLE if not exists cart ( 
-	id INT(100) PRIMARY KEY not null, 
+	id INT(225) PRIMARY KEY not null, 
 	book_id INT(20) not null, 
 	user_id INT(100) not null, 
 	name VARCHAR(50) not null, 
@@ -51,7 +51,7 @@ VALUES (162, 96, 51, 'Last Blood ', 17, 'lb.jpg', 3, 50.00, '2023-03-10 14:44:26
 
 
 CREATE TABLE if not exists confirm_order  (
-  order_id INT(100) not null,
+  order_id INT(225) not null,
   user_id INT(100) not null,
   name VARCHAR(50) not null,
   email VARCHAR(50) not null,
@@ -59,15 +59,15 @@ CREATE TABLE if not exists confirm_order  (
   address VARCHAR(500) not null,
   payment_method varchar(20) not null,
   total_books VARCHAR(500) not null,
-  order_date VARCHAR(100) not null,
+  order_date datetime NOT NULL DEFAULT current_timestamp(),
   payment_status  varchar(100) NOT NULL DEFAULT 'pending',
-  date VARCHAR(20) not null,
+  date datetime NOT NULL DEFAULT current_timestamp(),
   total_price DECIMAL(10,2) not null
 
 );
 
 INSERT IGNORE INTO confirm_order (order_id, user_id, name, email, number, address, payment_method, total_books, order_date, payment_status, date, total_price) 
-VALUES (1, 51, 'Sovanda Ban', 'sovanda@gmail.com', 1234567890, '123 Main St, Anytown, CA 12345','cash on delivery', 'Ray Bearer #88,(1)', '2023-03-10 14:44:26', 'completed', '2023-03-11 10:00:00', 50);
+VALUES (1,51, 'Sovanda Ban', 'sovanda@gmail.com', 1234567890, '123 Main St, Anytown, CA 12345','cash on delivery', 'Ray Bearer #88,(1)', '2023-03-10 14:44:26', 'completed', '2023-03-11 10:00:00', 50);
 
 
 CREATE TABLE if not exists msg (
@@ -143,9 +143,9 @@ VALUES (51, 'sovanda', 'sovandaban', 'sovanda@gmail.com', '12345678', 'User'),
 ALTER TABLE book_info MODIFY bid int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 
-ALTER TABLE cart MODIFY id int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+ALTER TABLE cart MODIFY id int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
-ALTER TABLE confirm_order MODIFY order_id INT(100) PRIMARY KEY AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE confirm_order MODIFY order_id INT(225) PRIMARY KEY AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 ALTER TABLE msg MODIFY id int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
@@ -164,4 +164,7 @@ ALTER TABLE msg ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id);
 
 ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id); 
 
-ALTER TABLE confirm_order MODIFY COLUMN date DATETIME DEFAULT CURRENT_TIMESTAMP;
+
+
+
+

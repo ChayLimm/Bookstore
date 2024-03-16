@@ -163,3 +163,5 @@ ALTER TABLE confirm_order ADD FOREIGN KEY (user_id) REFERENCES users_info(user_i
 ALTER TABLE msg ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id);
 
 ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id); 
+
+ALTER TABLE confirm_order MODIFY COLUMN date DATETIME DEFAULT CURRENT_TIMESTAMP;

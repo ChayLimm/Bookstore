@@ -20,12 +20,11 @@ session_start();
 
   <?php include 'index_header.php'; ?>
 
-  <div class="container" id="firstbanner">
+  <div id="firstbanner">
     <h1>Magical</h1>
     <p class="slang">All the scenarios become real at once </p>
     <button id="btnlearn">Learn more</button>
   </div>
-
   <div class="container text-center" id="book_container">
     <h1 class="arrival_magic">New Arrival</h1>
     <div class="row">
@@ -45,7 +44,9 @@ session_start();
               <div class="container" id="product_card">
                 <img src="bookspicture/' . $book_cover . '" onclick="openPopup(this)" alt="' . htmlspecialchars($title) . '">
                 <h4>' . htmlspecialchars($title) . '</h4> 
-                <p>' . htmlspecialchars($description) . '</p>
+                <div class="desc">
+
+                <h7>' . htmlspecialchars($description) . '</h7></div>
                 <p>' . htmlspecialchars($price) . '$</p>
               </div>
             </div>
@@ -62,9 +63,8 @@ session_start();
 
   <!-- Popup container -->
   <div id="popup" class="popup">
-    <span class="close" onclick="closePopup()">&times;</span>
     <div class="popup-content">
-    <span class="close" onclick="closePopup()">&times;</span>
+      <span class="close" onclick="closePopup()">&times;</span>
 
       <div class="row g-0">
         <div class="col-md-4">
@@ -73,8 +73,11 @@ session_start();
         <div class="col-md-8">
           <div class="popup-details">
             <h5 id="popup-title" class="popup-title"></h5>
-            <p id="popup-description" ></p>
-            <p id="popup-price" class="popup-price"></p>
+            <p id="popup-price"></p>
+            <p id="popup-description" class="popup-price"></p>
+            <button class="padd">Add to cart</button>
+            <button class="pbuy">Buy</button>
+
           </div>
         </div>
       </div>

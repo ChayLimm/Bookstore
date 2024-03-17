@@ -51,6 +51,7 @@ if (isset($_POST['checkout'])) {
                 $cart_products[] = $cart_item['name'] . ' #' . $cart_item['book_id'] . ',(' . $cart_item['quantity'] . ') ';
                 $quantity = $cart_item['quantity'];
                 $unit_price = $cart_item['price'];
+                $cart_books = $cart_item['name'];
                 $sub_total = ($cart_item['price'] * $cart_item['quantity']);
                 $cart_total += $sub_total;
             }
@@ -58,19 +59,28 @@ if (isset($_POST['checkout'])) {
 
         $total_books = implode(' ', $cart_products);
 
-        // Insert into orders and confirm_order tables
-        mysqli_query($conn, "INSERT INTO `orders` (user_id, address, city, state, country, pincode, book, quantity, unit_price, sub_total) 
-                    VALUES ('$user_id', '$address', '$city', '$state', '$country', '$pincode', '$total_cart', '$quantity', '$unit_price', '$sub_total')") or die('Query failed: ' . mysqli_error($conn));
+        $order_query = mysqli_query($conn, "SELECT * FROM `confirm_order` WHERE name = '$name' AND number = '$number' AND email = '$email' AND payment_method = '$method' AND address = '$address' AND total_books = '$total_books' AND total_price = '$cart_total'") or die('query failed');
 
-        $order_id = mysqli_insert_id($conn); // Get the last inserted order id
 
-        mysqli_query($conn, "INSERT INTO `confirm_order` (order_id, user_id, name, number, email, payment_method, address, total_books, total_price, order_date) 
-                             VALUES ('$order_id', '$user_id', '$name', '$number', '$email', '$method', '$full_address', '$total_books', '$cart_total', '$placed_on')") or die('Query failed: ' . mysqli_error($conn));
+        if (mysqli_num_rows($order_query) > 0) {
+          $message[] = 'order already placed!';
+        } 
+        else {
 
-        // Clear the cart
-        mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = '$user_id'") or die('Query failed: ' . mysqli_error($conn));
+            // Insert into orders and confirm_order tables
+            mysqli_query($conn, "INSERT INTO `orders` (user_id, address, city, state, country, pincode, book, quantity, unit_price, sub_total) 
+                        VALUES ('$user_id', '$address', '$city', '$state', '$country', '$pincode', '$cart_books', '$quantity', '$unit_price', '$sub_total')") or die('Query failed: ' . mysqli_error($conn));
 
-        $message[] = 'order placed successfully!';
+            $order_id = mysqli_insert_id($conn); // Get the last inserted order id
+
+            mysqli_query($conn, "INSERT INTO `confirm_order` (order_id, user_id, name, number, email, payment_method, address, total_books, total_price, order_date) 
+                                VALUES ('$order_id', '$user_id', '$name', '$number', '$email', '$method', '$full_address', '$total_books', '$cart_total', '$placed_on')") or die('Query failed: ' . mysqli_error($conn));
+
+            // Clear the cart
+            mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = '$user_id'") or die('Query failed: ' . mysqli_error($conn));
+
+            $message[] = 'order placed successfully!';
+        }
     }
 }
 

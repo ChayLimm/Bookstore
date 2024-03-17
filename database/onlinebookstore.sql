@@ -109,8 +109,6 @@ VALUES
 	(9, 53, 'Manson', 'manson@gmail.com', 11111111, 'Thank you for the prompt response.', '2023-03-10 14:50:26');
 
 
-
-
 -- select * from orders;
 
 CREATE TABLE if not exists author (

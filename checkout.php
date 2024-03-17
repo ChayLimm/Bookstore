@@ -60,7 +60,7 @@ if (isset($_POST['checkout'])) {
 
         // Insert into orders and confirm_order tables
         mysqli_query($conn, "INSERT INTO `orders` (user_id, address, city, state, country, pincode, book, quantity, unit_price, sub_total) 
-                    VALUES ('$user_id', '$address', '$city', '$state', '$country', '$pincode', '$total_books', '$quantity', '$unit_price', '$sub_total')") or die('Query failed: ' . mysqli_error($conn));
+                    VALUES ('$user_id', '$address', '$city', '$state', '$country', '$pincode', '$total_cart', '$quantity', '$unit_price', '$sub_total')") or die('Query failed: ' . mysqli_error($conn));
 
         $order_id = mysqli_insert_id($conn); // Get the last inserted order id
 

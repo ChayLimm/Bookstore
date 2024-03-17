@@ -14,7 +14,7 @@
 
         $order_update_id = $_POST['order_id'];
         $update_payment = $_POST['update_payment'];
-        $date = date("d.m.Y");
+        $date = date("y.m.d h:i:m");
         mysqli_query($conn, "UPDATE `confirm_order` SET payment_status = '$update_payment',date='$date' WHERE order_id = '$order_update_id'") or die('query failed');
         $message[] = 'payment status has been updated!';
     }

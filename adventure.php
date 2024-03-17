@@ -76,7 +76,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-        
+
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -86,14 +86,15 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100 " src="https://source.unsplash.com/2200x800/?khmer books" alt="First slide">
+                <img class="d-block w-100 " src="https://source.unsplash.com/2200x800/?books" alt="First slide">
             </div>
 
             <div class="carousel-item">
                 <img class="d-block w-100" src="https://source.unsplash.com/2200x800/?novel books" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="https://source.unsplash.com/2200x800/?pyshological books" alt="Third slide">
+                <img class="d-block w-100" src="https://source.unsplash.com/2200x800/?pyshological books"
+                    alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -111,7 +112,7 @@
         <div class="container px-5 mx-auto">
             <h2 class="text-gray-400 m-8 font-extrabold text-4xl text-center border-t-2 text-red-800"
                 style="color: rgb(0, 167, 245);">
-                Khmer Book
+                Adventure Book
             </h2>
         </div>
 
@@ -120,7 +121,7 @@
         <div class="box-container">
 
             <?php
-            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` Where category='KhmerBook' ") or die('query failed');
+            $select_book = mysqli_query($conn, "SELECT * FROM `book_info` Where category='adventure'") or die('query failed');
             if (mysqli_num_rows($select_book) > 0) {
                 while ($fetch_book = mysqli_fetch_assoc($select_book)) {
                     ?>

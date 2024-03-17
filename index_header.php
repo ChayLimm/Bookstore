@@ -109,9 +109,9 @@
                 <button class="dropbtn">Genre </button>
                 <div class="dropdown-content">
                     <a href="index.php#New">New Arrived</a>
-                    <a href="http://localhost:3000/index.php#Adventure">Adventure</a>
+                    <a href="http://localhost:3000/adventure.php">Adventure</a>
                     <a href="http://localhost:3000/magic.php">Magic</a>
-                    <a href="http://localhost:3000/index.php#Knowledge">Knowledge</a>
+                    <a href="http://localhost:3000/Knowledge.php">Knowledge</a>
                     <a href="http://localhost:3000/khmerbook.php">Khmer Book</a>
 
                 </div>

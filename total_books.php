@@ -16,7 +16,8 @@
         $update_p_id = $_POST['update_p_id'];
         $update_name = $_POST['update_name'];
         $update_title = $_POST['update_title'];
-        $update_description = $_POST['update_description'];
+        // Fixing error description
+        $update_description = mysqli_real_escape_string($conn, $_POST['update_description']); 
         $update_price = $_POST['update_price'];
         $update_category = $_POST['update_category'];
 
@@ -92,6 +93,7 @@
                             <option value="Adventure">Adventure</option>
                             <option value="Magic">Magic</option>
                             <option value="knowledge">knowledge</option>
+                            <option value="khmerBook">Khmer Book</option>
                         </select>
                         <input type="text" name="update_description" value="<?php echo $fetch_update['description']; ?>" class="box"
                             required placeholder="enter product description">

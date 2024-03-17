@@ -113,15 +113,15 @@
                                 </h3>
                                 <label for="quantity">Quantity:</label>
                                 <input type="number" name="quantity" value="1" min="1" max="10" id="quantity">
-                                <div class="buttons">
+                                <div class="buttons" >
 
                                     <input class="hidden_input" type="hidden" name="book_name" value="<?php echo $fetch_book['name'] ?>">
                                     <input class="hidden_input" type="hidden" name="book_id" value="<?php echo $fetch_book['bid'] ?>">
                                     <input class="hidden_input" type="hidden" name="book_image" value="<?php echo $fetch_book['image'] ?>">
                                     <input class="hidden_input" type="hidden" name="book_price" value="<?php echo $fetch_book['price'] ?>">
-                                    <input type="submit" name="add_to_cart" value="Add To Cart" class="btn">
+                                    <input type="submit" name="add_to_cart" value="Add To Cart" class="btn" style="margin-left:5px;">
                                     <!-- <input type="submit" name="add_to_cart" value="Add to cart" class="btn"> -->
-                                    <button name="add_to_cart"><img style="height: 40px;" src="./images/cart1.png" alt="Add to cart"></button>
+                                    <button type="submit" name="add_to_cart" value="Add To Cart" style="margin-left:30px;"><img style="height: 40px;" src="./images/cart1.png" alt="Add to cart"></button>
                                 </div>
                                 <h3>Book Details</h3>
                                 <p>

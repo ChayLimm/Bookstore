@@ -56,7 +56,7 @@
 
             <img class="card-img-top" src="./images/pen3.png" alt="Card image cap" />
             <div class="card-body">
-                <h5 class="card-title">Number Of Pending Orders in ₨</h5>
+                <h5 class="card-title">Number Of Pending Orders in $</h5>
                 <p class="card-text">
                     <?php echo $total_pendings ?>
                 </p>
@@ -80,7 +80,7 @@
             ?>
             <img class="card-img-top" src="./images/compn.png" alt="Card image cap" />
             <div class="card-body">
-                <h5 class="card-title">Number Of Completed Orders in ₨</h5>
+                <h5 class="card-title">Number Of Completed Orders in $</h5>
                 <p class="card-text">
                     <?php echo $total_completed; ?>
                 </p>

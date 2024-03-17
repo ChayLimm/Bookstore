@@ -1,5 +1,7 @@
 -- drop database onlinebookstore; 
 
+START TRANSACTION;
+
 CREATE DATABASE onlinebookstore; 
 USE onlinebookstore;
 
@@ -164,6 +166,14 @@ ALTER TABLE confirm_order ADD FOREIGN KEY (user_id) REFERENCES users_info(user_i
 ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id); 
 
 ALTER TABLE msg ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id);
+
+ALTER TABLE orders DROP FOREIGN KEY orders_ibfk_1;
+ALTER TABLE orders ADD CONSTRAINT orders_ibfk_1 FOREIGN KEY (user_id) REFERENCES users_info(user_id) ON DELETE CASCADE;
+
+ALTER TABLE book_info MODIFY COLUMN image VARCHAR(255);
+ALTER TABLE book_info MODIFY COLUMN name VARCHAR(100);
+ALTER TABLE cart MODIFY COLUMN image VARCHAR(255);
+
 
 
 -- select * from orders;

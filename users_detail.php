@@ -11,13 +11,16 @@
 
     if (isset($_GET['delete_user'])) {
         $delete_id = $_GET['delete_user'];
-         // Delete associated records from the orders table
+
+        // Delete associated records from the orders table
+        mysqli_query($conn, "DELETE FROM confirm_order WHERE order_id IN (SELECT id FROM orders WHERE user_id = '$delete_id')") or die('Query failed: ' . mysqli_error($conn));
+
         mysqli_query($conn, "DELETE FROM `orders` WHERE user_id = '$delete_id'") or die('Query failed: ' . mysqli_error($conn));
 
         // Then delete the user from the users_info table
         mysqli_query($conn, "DELETE FROM `users_info` WHERE user_id = '$delete_id'") or die('Query failed: ' . mysqli_error($conn));
-        
-            header('location:users_detail.php');
+
+        header('location:users_detail.php');
     }
 
     if (isset($_POST['update_user'])) {

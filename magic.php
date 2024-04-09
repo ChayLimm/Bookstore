@@ -2,6 +2,37 @@
 include 'config.php';
 session_start();
 ?>
+<?php
+
+include 'config.php';
+
+error_reporting(0);
+session_start();
+
+$user_id = $_SESSION['user_id'];
+
+if (isset($_POST['padd'])) {
+    if (!isset($user_id)) {
+        $message[] = 'Please Login to get your books';
+    } else {
+        $name = $_POST['title'];
+        $id = $_POST['id'];
+        $image = $_POST['image'];
+        $price = $_POST['price'];
+        $quantity = $_POST['quantity'];
+        $total_price = number_format($book_price * $book_quantity);
+        $select_book = $conn->query("SELECT * FROM cart WHERE name= '$book_name' AND user_id='$user_id' ") or die('query failed');
+
+        if (mysqli_num_rows($select_book) > 0) {
+            $message[] = 'This Book is already in your cart';
+        } else {
+            $conn->query("INSERT INTO cart (`book_id`,`user_id`,`name`, `price`, `image`, `quantity` ,`total`) VALUES('$id','$user_id','$name','$price','$image','$quantity', '$total_price')") or die('Add to cart Query failed');
+            $message[] = 'Book Added To Cart Successfully';
+        }
+    }
+
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +69,7 @@ session_start();
           $book_cover = $row['image'];
           $price = $row['price'];
           $description = $row['description'];
+          $bookid = $row['bid'];
 
           echo '
             <div class="col">
@@ -75,10 +107,19 @@ session_start();
             <h5 id="popup-title" class="popup-title"></h5>
             <p id="popup-price"></p>
             <p id="popup-description" class="popup-price"></p>
-            <button class="padd">Add to cart</button>
-            <button class="pbuy">Buy</button>
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" value="1" min="1" max="10" id="quantity">
+            <div class="buttons">
 
-          </div>
+                                    <input class="hidden_input" type="hidden" name="name" value="<?php echo $fetch_book['name'] ?>">
+                                    <input class="hidden_input" type="hidden" name="id" value="<?php echo $fetch_book['bid'] ?>">
+                                    <input class="hidden_input" type="hidden" name="image" value="<?php echo $fetch_book['image'] ?>">
+                                    <input class="hidden_input" type="hidden" name="price" value="<?php echo $fetch_book['price'] ?>">
+                                    <input type="submit" name="padd" value="Add To Cart" class="btn">
+                                    <!-- <input type="submit" name="add_to_cart" value="Add to cart" class="btn"> -->
+                                </div>
+            <button class="pbuy">Buy</button>
+         </div>
         </div>
       </div>
     </div>

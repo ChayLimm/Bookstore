@@ -14,7 +14,6 @@
 
         // Delete associated records from the orders table
         mysqli_query($conn, "DELETE FROM confirm_order WHERE order_id IN (SELECT id FROM orders WHERE user_id = '$delete_id')") or die('Query failed: ' . mysqli_error($conn));
-
         mysqli_query($conn, "DELETE FROM `orders` WHERE user_id = '$delete_id'") or die('Query failed: ' . mysqli_error($conn));
 
         // Then delete the user from the users_info table

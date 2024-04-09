@@ -31,7 +31,9 @@ INSERT INTO book_info (bid, name, title, price , category, description, image, d
 (93, 'Seventh Sun', ' Lani Forbes', '25', 'Magic', 'The terrible Asuras are pretty notorious. These demons have decided to spread chaos across the world and win over heaven. Here comes an Asura trying to kidnap mother Earth', 'kjljl.jpg', '2023-02-24 11:55:58'),
 (94, 'Sunrise', 'Jhon D', '18', 'Magic', 'Charming but venturesome college student, Abhay Sharma, always thought the Mahabharata was just a story; until he set out to explore the secrets of an ancient temple – and finds himself transported five thousand years back in time!', 'hujh.jpg', '2023-02-24 11:57:02'),
 (95, 'Batman Knight', 'DC', '22', 'Adventure', 'This collection of adorable stories for children show us how the Asuras tried to defeat the Devas, and how the gods ultimately won over. These stories will entertain, educate and provide healthy enjoyment to the readers.', 'kjkjl.jpg', '2023-02-24 11:59:54'),
-(96, 'Last Blood ', 'Alexander G', '24', '', 'The political struggle in the ancient city of Hastinapur is escalating as the Pandavas and Kauravas are on the verge of war. But its the rise of the demonic Asura King, Mahendrasura, that most troubles Krishna. Fueled by vengeance, Mahendrasura is not looking to just win a battle. Instead, he in search of dark powers to eradicate humanity once and for all.', 'lb.jpg', '2023-02-24 12:12:30');
+(96, 'Last Blood ', 'Alexander G', '24', '', 'The political struggle in the ancient city of Hastinapur is escalating as the Pandavas and Kauravas are on the verge of war. But its the rise of the demonic Asura King, Mahendrasura, that most troubles Krishna. Fueled by vengeance, Mahendrasura is not looking to just win a battle. Instead, he in search of dark powers to eradicate humanity once and for all.', 'lb.jpg', '2023-02-24 12:12:30'),
+(97, 'Cambodia History', 'Captivating History', '15', 'khmerBook', 'Cambodian History: A Captivating Guide to the History of Cambodia and the Khmer Empire (Asian History) Cambodian History: A Captivating Guide to the History of Cambodia and the Khmer Empire (Asian History) ', 'camhistory.jpg', '2024-03-17 14:12:37'),
+(98, 'The Khmer empire', 'Charles River', '12', 'khmerBook', 'The Khmer Empire: The History and Legacy of One of Southeast Asia’s Most Influential Empires. The Khmer Empire, also known as the Angkor Empire, was a powerful empire of Southeast Asia that was established in 802 CE and ended in 1431 with the invasion of the Siamese and abandonment of Angkor.  ', 'khmerEmpire.jpg', '2024-03-17 14:25:07');
 
 -- select * from book_info;
 
@@ -174,7 +176,7 @@ ALTER TABLE book_info MODIFY COLUMN image VARCHAR(255);
 ALTER TABLE book_info MODIFY COLUMN name VARCHAR(100);
 ALTER TABLE cart MODIFY COLUMN image VARCHAR(255);
 
-
+select * from book_info;
 
 -- select * from orders;
 -- select * from confirm_order;
@@ -183,5 +185,6 @@ ALTER TABLE cart MODIFY COLUMN image VARCHAR(255);
 -- DELETE FROM orders WHERE id IN (2, 3, 4);
 
 
-
+-- select * from users_info;
+-- select * from book_info;
 

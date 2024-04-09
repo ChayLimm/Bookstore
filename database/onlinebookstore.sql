@@ -1,5 +1,7 @@
 -- drop database onlinebookstore; 
 
+START TRANSACTION;
+
 CREATE DATABASE onlinebookstore; 
 USE onlinebookstore;
 
@@ -13,7 +15,7 @@ CREATE TABLE  if not exists book_info(
 	description longtext not null, 
 	image varchar(10) NOT NULL,
 	date datetime NOT NULL DEFAULT current_timestamp()
-	
+	 
 );
 
 INSERT INTO book_info (bid, name, title, price , category, description, image, date) VALUES
@@ -34,7 +36,7 @@ INSERT INTO book_info (bid, name, title, price , category, description, image, d
 -- select * from book_info;
 
 CREATE TABLE if not exists cart ( 
-	id INT(100) PRIMARY KEY not null, 
+	id INT(225) PRIMARY KEY not null, 
 	book_id INT(20) not null, 
 	user_id INT(100) not null, 
 	name VARCHAR(50) not null, 
@@ -49,9 +51,29 @@ CREATE TABLE if not exists cart (
 INSERT INTO cart (id, book_id, user_id, name, price, image, quantity, total , date) 
 VALUES (162, 96, 51, 'Last Blood ', 17, 'lb.jpg', 3, 50.00, '2023-03-10 14:44:26');
 
+CREATE TABLE orders (
+  id int(225) PRIMARY KEY AUTO_INCREMENT,
+  user_id int(100),
+  address varchar (50),
+  city varchar(100) ,
+  state varchar(50),
+  country varchar(50),
+  pincode int(6),
+  book varchar(50),
+  unit_price double(10,2),
+  quantity int(10) ,
+  sub_total double(10,2),
+  payment_status varchar(100) default 'pending'
+  --   order_date varchar(50),
+
+ );
+
+INSERT INTO orders (id, user_id, address, city, state, country, pincode, book, unit_price, quantity, sub_total, payment_status) VALUES
+(1, 51, 'yey', '747hfh', 'PP', 'Cam', 6546, 'yukuyk', 56778.00, 1, 56778.00, 'completed');
+
 
 CREATE TABLE if not exists confirm_order  (
-  order_id INT(100) not null,
+  order_id INT(225) primary key not null AUTO_INCREMENT,
   user_id INT(100) not null,
   name VARCHAR(50) not null,
   email VARCHAR(50) not null,
@@ -59,15 +81,16 @@ CREATE TABLE if not exists confirm_order  (
   address VARCHAR(500) not null,
   payment_method varchar(20) not null,
   total_books VARCHAR(500) not null,
-  order_date VARCHAR(100) not null,
+  order_date datetime NOT NULL DEFAULT current_timestamp(),
   payment_status  varchar(100) NOT NULL DEFAULT 'pending',
-  date VARCHAR(20) not null,
-  total_price DECIMAL(10,2) not null
+  date datetime NOT NULL DEFAULT current_timestamp(),
+  total_price DECIMAL(10,2) not null,
+  foreign key (order_id) references orders(id)
 
 );
 
-INSERT IGNORE INTO confirm_order (order_id, user_id, name, email, number, address, payment_method, total_books, order_date, payment_status, date, total_price) 
-VALUES (1, 51, 'Sovanda Ban', 'sovanda@gmail.com', 1234567890, '123 Main St, Anytown, CA 12345','cash on delivery', 'Ray Bearer #88,(1)', '2023-03-10 14:44:26', 'completed', '2023-03-11 10:00:00', 50);
+INSERT INTO confirm_order (order_id, user_id, name, email, number, address, payment_method, total_books, order_date, payment_status, date, total_price) 
+VALUES (1, 51, 'Sovanda Ban', 'sovanda@gmail.com', 1234567890, '123 Main St, Anytown, CA 12345', 'cash on delivery', 'Ray Bearer #88,(1)', '2023-03-10 14:44:26', 'completed', '2023-03-11 10:00:00', 50);
 
 
 CREATE TABLE if not exists msg (
@@ -87,27 +110,8 @@ VALUES
 	(8, 52, 'Sophanny', 'sophanny@gmail.com', 87654321, 'Hi, I have a question about my order.', '2023-03-10 14:46:00'),
 	(9, 53, 'Manson', 'manson@gmail.com', 11111111, 'Thank you for the prompt response.', '2023-03-10 14:50:26');
 
-CREATE TABLE orders (
-  id int(225)primary key ,
-  user_id int(100),
-  address varchar (50),
-  city varchar(100) ,
-  state varchar(50),
-  country varchar(50),
-  pincode int(6),
-  book varchar(50),
-  unit_price double(10,2),
-  quantity int(10) ,
-  sub_total double(10,2),
-  payment_status varchar(100) default 'pending'
-  --   order_date varchar(50),
 
- );
-
-INSERT INTO orders (id, user_id, address, city, state, country, pincode, book, unit_price, quantity, sub_total, payment_status) VALUES
-(0, 51, 'yey', '747hfh', 'PP', 'Cam', 6546, 'yukuyk', 56778.00, 1, 56778.00, 'completed'),
-(1, 51, 'hrth', 'hrt', 'hrth', 'Chi', 0123, 'Don Quixote by Migue', 2555.00, 1, 2555.00, 'pending');
-
+-- select * from orders;
 
 CREATE TABLE if not exists author (
 	author_id INT(50) PRIMARY KEY not null, 
@@ -143,9 +147,9 @@ VALUES (51, 'sovanda', 'sovandaban', 'sovanda@gmail.com', '12345678', 'User'),
 ALTER TABLE book_info MODIFY bid int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 
-ALTER TABLE cart MODIFY id int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+ALTER TABLE cart MODIFY id int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
-ALTER TABLE confirm_order MODIFY order_id INT(100) PRIMARY KEY AUTO_INCREMENT, AUTO_INCREMENT=2;
+-- ALTER TABLE confirm_order MODIFY order_id INT(225) AUTO_INCREMENT;
 
 ALTER TABLE msg MODIFY id int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
@@ -157,9 +161,27 @@ ALTER TABLE author ADD FOREIGN KEY (b_id) REFERENCES book_info(bid);
 ALTER TABLE cart ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id);
 ALTER TABLE cart ADD FOREIGN KEY (book_id) REFERENCES book_info(bid);
 
-ALTER TABLE confirm_order ADD FOREIGN KEY (order_id) REFERENCES orders(id); 
 ALTER TABLE confirm_order ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id);
+
+ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id); 
 
 ALTER TABLE msg ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id);
 
-ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users_info(user_id); 
+ALTER TABLE orders DROP FOREIGN KEY orders_ibfk_1;
+ALTER TABLE orders ADD CONSTRAINT orders_ibfk_1 FOREIGN KEY (user_id) REFERENCES users_info(user_id) ON DELETE CASCADE;
+
+ALTER TABLE book_info MODIFY COLUMN image VARCHAR(255);
+ALTER TABLE book_info MODIFY COLUMN name VARCHAR(100);
+ALTER TABLE cart MODIFY COLUMN image VARCHAR(255);
+
+
+
+-- select * from orders;
+-- select * from confirm_order;
+
+-- delete from confirm_order where order_id = 4;
+-- DELETE FROM orders WHERE id IN (2, 3, 4);
+
+
+
+

@@ -9,11 +9,15 @@
         header('location:login.php');
     }
 
-
     if (isset($_GET['delete_user'])) {
         $delete_id = $_GET['delete_user'];
-        mysqli_query($conn, "DELETE FROM `users_info` WHERE user_id = '$delete_id'") or die('query failed');
-        header('location:users_detail.php');
+         // Delete associated records from the orders table
+        mysqli_query($conn, "DELETE FROM `orders` WHERE user_id = '$delete_id'") or die('Query failed: ' . mysqli_error($conn));
+
+        // Then delete the user from the users_info table
+        mysqli_query($conn, "DELETE FROM `users_info` WHERE user_id = '$delete_id'") or die('Query failed: ' . mysqli_error($conn));
+        
+            header('location:users_detail.php');
     }
 
     if (isset($_POST['update_user'])) {
@@ -25,7 +29,7 @@
         $update_password = $_POST['update_password'];
         $update_user_type = $_POST['update_user_type'];
 
-        mysqli_query($conn, "UPDATE `users_info` SET name = '$update_name', surname='$update_name', email ='$update_email', password = '$update_password', user_type='$update_user_type' WHERE user_id = '$update_id'") or die('query failed');
+        mysqli_query($conn, "UPDATE `users_info` SET name = '$update_name', surname='$update_sname', email ='$update_email', password = '$update_password', user_type='$update_user_type' WHERE user_id = '$update_id'") or die('query failed');
 
         header('location:./users_detail.php');
     }
